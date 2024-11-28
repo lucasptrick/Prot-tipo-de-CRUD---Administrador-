@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!--Bootstrap 5 icons CDN-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <title>Prototipo CRM</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="p-3">
+      <div class="row">
+        <div class="col-12">
+          <button
+            class="btn btn-primary newUser"
+            data-bs-toggle="modal"
+            data-bs-target="#userForm"
+          >
+            <strong>Criar Usuário</strong><i class="bi bi-people"></i>
+          </button>
+
+          <button
+            class="btn btn-primary searchUser"
+            data-bs-toggle="modal"
+            data-bs-target="#userSearch"
+          >
+            <strong>Pesquisar Usuário</strong><i class="bi bi-search"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <table
+            class="table table-striped table-hover mt-3 text-center table-bordered"
+          >
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Foto</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Cidade</th>
+                <th>E-Mail</th>
+                <th>Telefone</th>
+                <th>Post</th>
+                <th>Data de Nascimento</th>
+                <th>Operação</th>
+              </tr>
+            </thead>
+
+            <tbody id="data"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!--Modal Form-->
+    <div class="modal fade" id="userForm">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Fill the Form</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <form action="#" id="myForm">
+              <div class="card imgholder">
+                <label for="imgInput" class="upload">
+                  <input type="file" name="" id="imgInput" />
+                  <i class="bi bi-plus-circle-dotted"></i>
+                </label>
+                <img
+                  src="./image/Profile Icon.webp"
+                  alt=""
+                  width="200"
+                  height="200"
+                  class="img img-form"
+                />
+              </div>
+
+              <div class="inputField" id="inputFieldForm">
+                <div>
+                  <label for="name">Nome:</label>
+                  <input type="text" name="" id="name" required />
+                </div>
+                <div>
+                  <label for="age">Idade:</label>
+                  <input type="number" name="" id="age" required />
+                </div>
+                <div>
+                  <label for="city">Cidade:</label>
+                  <input type="text" name="" id="city" required />
+                </div>
+                <div>
+                  <label for="email">E-Mail:</label>
+                  <input type="email" name="" id="email" required />
+                </div>
+                <div>
+                  <label for="phone">Telefone:</label>
+                  <input
+                    type="text"
+                    name=""
+                    id="phone"
+                    minlength="11"
+                    maxlength="11"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="post">Post:</label>
+                  <input type="text" name="" id="post" required />
+                </div>
+                <div>
+                  <label for="sDate">Data de Nascimento:</label>
+                  <input type="date" name="" id="sDate" required />
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Fechar
+            </button>
+            <button type="submit" form="myForm" class="btn btn-primary submit">
+              Enviar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Read Data Modal-->
+    <div class="modal fade" id="readData">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Perfil</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <form action="#" id="readForm">
+              <div class="card imgholder">
+                <img
+                  src="./image/Profile Icon.webp"
+                  alt=""
+                  width="200"
+                  height="200"
+                  class="showImg img-read"
+                />
+              </div>
+
+              <div class="inputField" id="inputFieldRead">
+                <div>
+                  <label for="name">Nome:</label>
+                  <input type="text" name="" id="showName" disabled />
+                </div>
+                <div>
+                  <label for="age">Idade:</label>
+                  <input type="number" name="" id="showAge" disabled />
+                </div>
+                <div>
+                  <label for="city">Cidade:</label>
+                  <input type="text" name="" id="showCity" disabled />
+                </div>
+                <div>
+                  <label for="email">E-Mail:</label>
+                  <input type="email" name="" id="showEmail" disabled />
+                </div>
+                <div>
+                  <label for="phone">Telefone:</label>
+                  <input
+                    type="text"
+                    name=""
+                    id="showPhone"
+                    minlength="11"
+                    maxlength="11"
+                    disabled
+                  />
+                </div>
+                <div>
+                  <label for="post">Post:</label>
+                  <input type="text" name="" id="showPost" disabled />
+                </div>
+                <div>
+                  <label for="sDate">Data de Nascimento:</label>
+                  <input type="date" name="" id="showsDate" disabled />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--Get Data Modal-->
+    <div
+      class="modal fade"
+      id="userSearch"
+      tabindex="-1"
+      aria-labelledby="searchModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="searchModalLabel">Pesquisar Usuário</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Fechar"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="searchForm">
+              <div class="mb-3">
+                <label for="searchEmail" class="form-label"
+                  >E-mail do Usuário</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="searchEmail"
+                  placeholder="Digite o e-mail do usuário"
+                  required
+                />
+              </div>
+              <div class="text-center">
+                <button type="button" class="btn btn-primary searchConfirm">
+                  Pesquisar
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Fechar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+      <div class="modal-content">
+        <h4>Confirma a exclusão deste item?</h4>
+        <button id="confirmDelete" class="btn btn-danger">Sim</button>
+        <button id="cancelDelete" class="btn btn-secondary">Não</button>
+      </div>
+    </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="app.js"></script>
+  </body>
+</html>
